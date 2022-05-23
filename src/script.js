@@ -30,6 +30,11 @@ $(function() {
         check_retype_password();
     });
 
+    /**
+     * It checks if the input value is empty or not, if it is empty, it displays an error message and
+     * changes the border color to red, if it is not empty, it hides the error message and changes the
+     * border color to green
+     */
     function check_fname() {
         var pattern = /^[a-zA-Z]*$/;
         var fname = $("#form_fname").val();
@@ -57,7 +62,12 @@ $(function() {
             error_fname = true;
         }
     }
-
+ /**
+     * It checks if the password and retype password fields are equal. If they are not equal, it shows
+     * an error message and changes the border color of the retype password field to red. If they are
+     * equal, it hides the error message and changes the border color of the retype password field to
+     * green
+     */
     function check_password() {
         var password_length = $("#form_password").val().length;
         if (password_length < 8) {
@@ -71,6 +81,7 @@ $(function() {
         }
     }
 
+   
     function check_retype_password() {
         var password = $("#form_password").val();
         var retype_password = $("#form_retype_password").val();
@@ -85,6 +96,11 @@ $(function() {
         }
     }
 
+    /**
+     * The function checks if the email address is valid and if it is, it hides the error message and
+     * changes the border color to green. If the email address is invalid, it shows the error message
+     * and changes the border color to red
+     */
     function check_email() {
         var pattern = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         var email = $("#form_email").val();
@@ -99,6 +115,8 @@ $(function() {
         }
     }
 
+    /* A function that is called when the form is submitted. It checks if the form is filled correctly
+    and if it is, it returns true, if it is not, it returns false. */
     $("#registration_form").submit(function() {
         error_fname = false;
         error_sname = false;
@@ -112,6 +130,8 @@ $(function() {
         check_password();
         check_retype_password();
 
+       /* Checking if all the fields are filled correctly and if they are, it returns true, if they are
+       not, it returns false. */
         if (error_fname === false && error_sname === false && error_email === false && error_password === false && error_retype_password === false) {
             alert("Registration Successfull");
             return true;
